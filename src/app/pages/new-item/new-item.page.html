@@ -20,16 +20,18 @@
               </ion-fab>
            
         </ion-card-content>
-  <form [formGroup]="new_item_form" (submit)="createItem(new_item_form.value)">
+  <form [formGroup]="new_item_form" (submit)="createItem()">
     <ion-item>
       <ion-label color="primary" position="floating">Title</ion-label>
-      <ion-input type="text" formControlName="title" required></ion-input>
+      <ion-input type="text" formControlName="name" required></ion-input>
     </ion-item>
+    <p ion-text color="danger" class="text-12x has-error" *ngIf="new_item_form.get('name').touched && new_item_form.get('name').hasError('required')">This field is required</p>
+    <p ion-text color="danger" class="text-12x has-error" *ngIf="new_item_form.get('name').touched && new_item_form.get('name').hasError('pattern')">Name invalid</p>
     <ion-item>
       <ion-label color="primary" position="floating">Description</ion-label>
-      <ion-input type="text" formControlName="description" required></ion-input>
+      <ion-input type="text" formControlName="phone" required></ion-input>
     </ion-item>
-    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_item_form.valid">Create</ion-button>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="new_item_form.invalid">Create</ion-button>
   </form>
   </ion-card>
 

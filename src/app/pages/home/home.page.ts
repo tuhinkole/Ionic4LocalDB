@@ -11,10 +11,7 @@ export class HomePage implements OnInit {
 
   items: Array<any>;
 
-  constructor(
-    private router: Router,
-    public itemService: ItemService
-  ){}
+  constructor(private router: Router,public itemService: ItemService){}
 
   ngOnInit(){
     this.items = this.itemService.getItems();

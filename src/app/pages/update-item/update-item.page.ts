@@ -29,8 +29,8 @@ export class UpdateItemPage implements OnInit {
           this.goBack();
         } else{
           this.edit_item_form = this.formBuilder.group({
-            title: new FormControl(this.item.title, Validators.required),
-            description: new FormControl(this.item.description, Validators.required)
+            name: new FormControl(this.item.name, Validators.required),
+            phone: new FormControl(this.item.phone, Validators.required)
           });
         }
       }
@@ -44,8 +44,8 @@ export class UpdateItemPage implements OnInit {
   updateItem(value){
     let newValues = {
       id: this.item.id,
-      title: value.title,
-      description: value.description
+      name: value.name,
+      phone: value.phone
     }
     this.itemService.updateItem(newValues);
     this.goBack();

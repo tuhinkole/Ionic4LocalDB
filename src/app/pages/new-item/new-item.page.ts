@@ -10,9 +10,10 @@ import { ItemService } from '../../services/item.service';
 })
 export class NewItemPage implements OnInit {
 
-  new_item_form: FormGroup;
+  public new_item_form: FormGroup;
   no_Img = true;
   selectedImage:any;
+
 
   constructor(
     private router: Router,
@@ -22,8 +23,10 @@ export class NewItemPage implements OnInit {
 
   ngOnInit() {
     this.new_item_form = this.formBuilder.group({
-      title: new FormControl('', Validators.required),
-      description: new FormControl('', Validators.required)
+      name: ['', Validators.compose([
+        Validators.required, Validators.maxLength(100)
+      ])],
+      phone: ['' ,[Validators.required, Validators.maxLength(10)]],
     });
   }
 
@@ -31,8 +34,9 @@ export class NewItemPage implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  createItem(value){
-    this.itemService.createItem(value.title, value.description);
+  createItem(){
+    console.log("value",this.new_item_form.value);
+    this.itemService.createItem(this.new_item_form.value.name, this.new_item_form.value.phone);
     this.new_item_form.reset();
     this.goBack();
   }

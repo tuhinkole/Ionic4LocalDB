@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>New Item</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+        <ion-card-content >
+              <img *ngIf="!no_Img" src="{{selectedImage}}" class="profilesimg" >
+              <img *ngIf="no_Img" src="../../assets/icon/favicon.png" class="profilesimg" >
+                
+                <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+                  <ion-fab-button (click)="takePicture()">
+                    <ion-icon name="camera"></ion-icon>
+                  </ion-fab-button>
+              </ion-fab>
+           
+        </ion-card-content>
+  <form [formGroup]="new_item_form" (submit)="createItem(new_item_form.value)">
+    <ion-item>
+      <ion-label color="primary" position="floating">Title</ion-label>
+      <ion-input type="text" formControlName="title" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" position="floating">Description</ion-label>
+      <ion-input type="text" formControlName="description" required></ion-input>
+    </ion-item>
+    <ion-button class="submit-btn" expand="block" type="submit" [disabled]="!new_item_form.valid">Create</ion-button>
+  </form>
+  </ion-card>
+
+</ion-content>

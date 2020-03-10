@@ -1,0 +1,30 @@
+.submit-btn {
+  margin-top: 30px;
+}
+
+.error-message {
+  color: var(--ion-color-danger);
+}
+
+
+.profilesimg {
+  height: 128px;
+  width: 128px;
+  border-radius: 50%;
+  border: solid 4px #000;
+  display: inline;
+  box-shadow: 0 0 28px blue($color: #000000);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+ion-fab.md.fab-horizontal-center.fab-vertical-bottom.hydrated {
+  margin-left: auto;
+  height: 40px;
+}
+ion-content.md.hydrated {
+  height: auto;
+  width: auto;
+  display: contents;
+}
+
